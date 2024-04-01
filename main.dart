@@ -15,28 +15,24 @@ class _TimerWidgetState extends State<TimerWidget> {
   TextEditingController _userNameController = TextEditingController();
   List<TimerModel> timers = [];
   int counter = 1;
-
   void addTimer() {
     String userName = _userNameController.text;
     if (userName.isNotEmpty) {
       TimerModel timer = TimerModel(userName, timers.length + 1,
-          removeTimer); // Provide serialNumber value
+          removeTimer); 
       timers.add(timer);
       setState(() {});
       _userNameController.text = '';
     }
   }
-
   void removeTimer(TimerModel timer) {
     int index = timers.indexOf(timer);
     timers.removeAt(index);
-    // Update serial numbers of entries below the deleted entry
     for (int i = index; i < timers.length; i++) {
       timers[i].serialNumber--;
     }
     setState(() {});
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -89,14 +85,11 @@ class _TimerWidgetState extends State<TimerWidget> {
   }
 }
 
-// ignore: must_be_immutable
 class TimerModel extends StatefulWidget {
   final String userName;
   int serialNumber;
   final Function(TimerModel) removeCallback;
-
   TimerModel(this.userName, this.serialNumber, this.removeCallback);
-
   @override
   _TimerModelState createState() => _TimerModelState();
 }
@@ -106,15 +99,12 @@ class _TimerModelState extends State<TimerModel>
   int secondsRemaining = 1200;
   bool paused = false;
   Timer? _timer;
-
   @override
   bool get wantKeepAlive => true;
-
   @override
   void initState() {
     super.initState();
   }
-
   void startTimer() {
     if (_timer == null) {
       setState(() {
@@ -133,7 +123,6 @@ class _TimerModelState extends State<TimerModel>
       });
     }
   }
-
   void pauseTimer() {
     setState(() {
       paused = true;
@@ -141,24 +130,20 @@ class _TimerModelState extends State<TimerModel>
       _timer = null;
     });
   }
-
   void _playHapticFeedback() {
     HapticFeedback.vibrate();
     setState(() {
       secondsRemaining = 0; // Set secondsRemaining to 0 to trigger UI update
     });
   }
-
   void deleteTimer() {
     widget.removeCallback(widget);
   }
-
   @override
   Widget build(BuildContext context) {
     super.build(context); // Ensure super.build is called
     int minutes = secondsRemaining ~/ 60;
     int seconds = secondsRemaining % 60;
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -207,7 +192,6 @@ class _TimerModelState extends State<TimerModel>
       ],
     );
   }
-
   @override
   void dispose() {
     _timer?.cancel();
@@ -226,7 +210,6 @@ class App extends StatelessWidget {
       home: TimerWidget(),
     );
   }
-
   MaterialColor createMaterialColor(Color color) {
     List<int> strengths = <int>[
       50,
@@ -242,7 +225,6 @@ class App extends StatelessWidget {
     ];
     Map<int, Color> swatch = <int, Color>{};
     final int r = color.red, g = color.green, b = color.blue;
-
     for (int strength in strengths) {
       swatch[strength] = Color.fromRGBO(r, g, b, 1);
     }
