@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 void main() {
-  runApp(BouncyApp());
+  runApp(App());
 }
 
 class TimerWidget extends StatefulWidget {
@@ -215,7 +215,7 @@ class _TimerModelState extends State<TimerModel>
   }
 }
 
-class BouncyApp extends StatelessWidget {
+class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
