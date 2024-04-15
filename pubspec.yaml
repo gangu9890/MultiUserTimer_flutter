@@ -1,0 +1,43 @@
+name: bouncy_timer
+description: A new Flutter project.
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  vibration: ^1.7.2
+  shared_preferences: ^2.2.1
+  path_provider: ^2.0.3
+  excel: ^4.0.3
+  permission_handler: ^11.3.1
+  flutter:
+    sdk: flutter
+  
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/Bouncy.png"
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.2
+
+flutter:
+  uses-material-design: true
+  # assets:
+  #  - Bouncy.png
+  #  - images/a_dot_ham.jpeg
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
